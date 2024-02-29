@@ -1,1 +1,65 @@
-<p> Hello World! </p>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+     <canvas id="myCanvas"></canvas>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MS-DOS Window</title>
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">MS-DOS Prompt</div>
+  </div>
+
+  <!-- Tabs -->
+  <menu role="tablist">
+    <li role="presentation"><a href="#terminal" role="tab" aria-selected="true">Terminal</a></li>
+    <li role="presentation"><a href="#files" role="tab">Files</a></li>
+    <!-- Add more tabs as needed -->
+  </menu>
+
+  <div class="window-body">
+    <div id="terminal" class="tab-content" role="tabpanel">
+      <pre class="dos-prompt">
+ ██████╗ ██████╗ ██╗  ████████╗██████╗ ██╗ ██████╗ ██╗████████╗ █████╗ ██╗     
+██╔════╝██╔═══██╗██║  ╚══██╔══╝██╔══██╗██║██╔════╝ ██║╚══██╔══╝██╔══██╗██║     
+██║     ██║   ██║██║     ██║   ██║  ██║██║██║  ███╗██║   ██║   ███████║██║     
+██║     ██║   ██║██║     ██║   ██║  ██║██║██║   ██║██║   ██║   ██╔══██║██║     
+╚██████╗╚██████╔╝███████╗██║██╗██████╔╝██║╚██████╔╝██║   ██║   ██║  ██║███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝╚═╝╚═╝╚═════╝ ╚═╝ ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
+                                                                                 
+          Microsoft(R) MS-DOS(R) Version 5.00.4009c
+                     (C)Copyright Microsoft Corp 1981-1990
+             Welcome to my site! 
+              About me
+              * I do Programming (Web Dev, Learning python)
+              *  I enjoy Gaming
+              * I like Writing/Reading
+              * I enjoy running 
+           Some things about me:
+              * I overuse vaporwave and retro design 
+            
+              *  I make conlangs and scripts for fun               
+              *  I literally will only watch a show if it is funny OR if its really good quality
+      </div> 
+    </pre>
+    </div>
+
+    <div id="files" class="tab-content" role="tabpanel">
+      <!-- Add content for the "Files" tab here -->
+      <p>Work In PRogress</p>
+    </div>
+    <!-- more tab -->
+  </div>
+</div>
+
+<script src="script.js"></script>
+ <canvas id="myCanvas">
+</body>
+</html>
