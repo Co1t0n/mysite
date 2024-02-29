@@ -28,11 +28,10 @@ filter: blur(1.5rem);
   transform: translate(-50%, -50%);
   max-width: 90vw; /* Adjust maximum width as needed */
   max-height: 90vh; /* Adjust maximum height as needed */
-  padding: 20px; /* Adjust padding as needed */
+  padding: 5px; /* Adjust padding as needed */
   background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-  border: 1px solid #ccc; /* Adjust border as needed */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adjust shadow as needed */
-  overflow: auto; /* Enable scrolling if needed */
+  overflow: none; /* Enable scrolling if needed */
   z-index: 1; /* Ensure the window content appears above the canvas */
 }
 
@@ -50,8 +49,7 @@ filter: blur(1.5rem);
 }
 
 .dos-prompt {
-                              @import url('https://fonts.cdnfonts.com/css/cascadia-code');
-                                                  font-family: 'Cascadia Code', sans-serif; 
+                              @import url('https://fonts.cdnfonts.com/css/cascadia-code');                                                font-family: 'Cascadia Code', sans-serif; 
   color: #ffffff; /* White text */
   font-size: 14px;
   margin: 0;
@@ -94,12 +92,7 @@ filter: blur(1.5rem);
     color: #ffffff;
     z-index: 2;
   }
-@font-face {
-  font-family:terminus;
-  src:url(/static/font/terminus.ttf);
-  font-weight:400;
-  font-style:normal
-}
+
   /* Adjust the sidebar styles for mobile */
   #sidebar {
     position: fixed;
