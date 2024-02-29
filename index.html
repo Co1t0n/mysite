@@ -1,139 +1,63 @@
-body {
-  margin: 0;
-  padding: 2;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colt.Digital</title>
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-  background: #111;
-}
-@font-face {
-  font-family:terminus;
-  src:url(/static/font/terminus.ttf);
-  font-weight:400;
-  font-style:normal
-}
-canvas {
- position: absolute;
-    touch-action: none;
- width: 100%;
-length: 100%; 
-filter: blur(1.5rem);
-  transform: scale(0.8); /* Adjust the scale factor as needed */
-  transform-origin: center; /* Ensure scaling originates from the center */
-  z-index: -1; /* Ensure the canvas is behind other content */
-}
+<canvas class="background"></canvas>
 
-.window {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90vw; /* Adjust maximum width as needed */
-  max-height: 90vh; /* Adjust maximum height as needed */
-  padding: 20px; /* Adjust padding as needed */
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-  border: 1px solid #ccc; /* Adjust border as needed */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adjust shadow as needed */
-  overflow: auto; /* Enable scrolling if needed */
-  z-index: 1; /* Ensure the window content appears above the canvas */
-}
+<div class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">MS-DOS Prompt</div>
+  </div>
 
-.title-bar {
-  background-color: #008080; /* Teal title bar */
-  color: #ffffff; /* White text */
-}
+  <!-- tab [template] -->
+  <menu role="tablist">
+    <li role="presentation"><a href="#terminal" role="tab" aria-selected="true">Terminal</a></li>
+    <li role="presentation"><a href="#files" role="tab">Files</a></li>
+    <!-- Add more tabs as needed -->
+  </menu>
 
-.title-bar-text {
-  padding: 5px 10px;
-}
+  <div class="window-body">
+    <div id="terminal" class="tab-content" role="tabpanel">
+      <pre class="dos-prompt">
+   _____    _ _     _____  _                 _ 
+ / ____|    | | |   |  __ \(_)     (_) |      | |
+| |     ___ | | |_  | |  | |_  __ _ _| |_ __ _| |
+| |    / _ \| | __| | |  | | |/ _` | | __/ _` | |        
+| |___| (_) | | |_ _| |__| | | (_| | | || (_| | |            
+ \_____\___/|_|\__(_)_____/|_|\__, |_|\__\__,_|_|     
+                               __/ |             
+                              |___/             
+                                                                                 
+          Microsoft(R) MS-DOS(R) Version 5.00.4009c
+                     (C)Copyright Microsoft Corp 1981-1990
+             Welcome to my site! 
+             
+              * I do Programming (Web Dev, Learning python)
+              *  I enjoy Gaming
+              * I like Writing/Reading
+              * I enjoy running 
+           Some things about me:
+              * I overuse vaporwave and retro design 
+            
+              *  I make conlangs and scripts for fun               
+              *  I literally will only watch a show if it is funny OR if its really good quality
+      </pre>
+    </div>
 
-.window-body {
-  padding: 10px;
-}
+    <div id="files" class="tab-content" role="tabpanel">
+      <!-- tab -->
+    </div>
+     <!-- add some more tabs -->
+  </div>
+</div>
 
-.dos-prompt {
-                              @import url('https://fonts.cdnfonts.com/css/cascadia-code');
-                                                  font-family: 'Cascadia Code', sans-serif; 
-  color: #ffffff; /* White text */
-  font-size: 14px;
-  margin: 0;
-  background-color: #000000; /* Black background */
-}
-
-.dos-prompt::selection {
-  background-color: #000000; /* Black background for selection */
-  color: #ffffff; /* White text for selection */
-}
-
-#command-line::before {
-  content: '|';
-  animation: blink-caret 0.75s infinite alternate;
-}
-
-@keyframes blink-caret {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: #ffffff; /* White text */
-  }
-}
-
-
-
-/* CSS for mobile devices */
-@media only screen and (max-width: 768px) {
-  /* Hide background on mobile */
-  body {
-    background: none;
-  }
-
-  /* Make the title bar sticky on mobile */
-  .title-bar {
-    position: sticky;
-    top: 0;
-    background-color: #008080;
-    color: #ffffff;
-    z-index: 2;
-  }
-@font-face {
-  font-family:terminus;
-  src:url(/static/font/terminus.ttf);
-  font-weight:400;
-  font-style:normal
-}
-  /* Adjust the sidebar styles for mobile */
-  #sidebar {
-    position: fixed;
-    top: 0;
-    left: -200px; /* Initially hidden */
-    width: 200px;
-    height: 100%;
-    background-color: #f4f4f4;
-    transition: left 0.3s ease;
-    z-index: 1;
-  }
-
-  #sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  #sidebar ul li {
-    padding: 10px;
-  }
-
-  #sidebar ul li a {
-    color: #333;
-    text-decoration: none;
-  }
-
-  /* Adjust the margin for the window body on mobile */
-  .window-body {
-    padding: 10px;
-    margin-top: 40px; /* Adjust based on the height of the title bar */
-      font-family:terminus;
-      src:url(/static/font/terminus.ttf);
-  font-weight:400;
-  font-style:normal
-  }
-
-}
+<script src="script.js"></script>
+</body>
+</html>
