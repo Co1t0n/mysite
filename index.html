@@ -1,35 +1,31 @@
 <!DOCTYPE html>
-
-<script src="./script.js"></script> 
 <html lang="en">
-      <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <head>
-  
   <meta charset="UTF-8">
-     <canvas id="myCanvas"></canvas>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MS-DOS Window</title>
-
-
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <script src="./script.js"></script>
 </head>
 <body>
+  <div class="window">
+    <div class="title-bar">
+      <div class="title-bar-text">MS-DOS Prompt</div>
+    </div>
 
-<div class="window">
-  <div class="title-bar">
-    <div class="title-bar-text">MS-DOS Prompt</div>
-  </div>
+    <!-- Tabs -->
+    <menu role="tablist">
+      <ul>
+        <li role="presentation"><a href="#terminal" role="tab" aria-selected="true">Terminal</a></li>
+        <li role="presentation"><a href="#files" role="tab">Files</a></li>
+        <!-- Add more tabs as needed -->
+      </ul>
+    </menu>
 
-  <!-- Tabs -->
-  <menu role="tablist">
-    <li role="presentation"><a href="#terminal" role="tab" aria-selected="true">Terminal</a></li>
-    <li role="presentation"><a href="#files" role="tab">Files</a></li>
-    <!-- Add more tabs as needed -->
-  </menu>
-
-  <div class="window-body">
-    <div id="terminal" class="tab-content" role="tabpanel">
-      <pre class="dos-prompt">
+    <div class="window-body">
+      <div id="terminal" class="tab-content" role="tabpanel">
+        <pre class="dos-prompt">
  ██████╗ ██████╗ ██╗  ████████╗██████╗ ██╗ ██████╗ ██╗████████╗ █████╗ ██╗     
 ██╔════╝██╔═══██╗██║  ╚══██╔══╝██╔══██╗██║██╔════╝ ██║╚══██╔══╝██╔══██╗██║     
 ██║     ██║   ██║██║     ██║   ██║  ██║██║██║  ███╗██║   ██║   ███████║██║     
@@ -50,18 +46,15 @@
             
               *  I make conlangs and scripts for fun               
               *  I literally will only watch a show if it is funny OR if its really good quality
-      </div> 
-    </pre>
-    </div>
+        </pre>
+      </div>
 
-    <div id="files" class="tab-content" role="tabpanel">
-      <!-- Add content for the "Files" tab here -->
-      <p>Work In PRogress</p>
+      <div id="files" class="tab-content" role="tabpanel">
+        <!-- Add content for the "Files" tab here -->
+        <p>Work In Progress</p>
+      </div>
+      <!-- more tab -->
     </div>
-    <!-- more tab -->
   </div>
-</div>
-
-  <canvas id="myCanvas">
 </body>
 </html>
