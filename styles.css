@@ -1,15 +1,16 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+
+  background: #111;
 }
 
 canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+ position: absolute;
+    touch-action: none;
+ width: 100%
+length: 100%; 
+
   transform: scale(0.8); /* Adjust the scale factor as needed */
   transform-origin: center; /* Ensure scaling originates from the center */
   z-index: -1; /* Ensure the canvas is behind other content */
@@ -68,3 +69,8 @@ canvas {
     color: #ffffff; /* White text */
   }
 }
+*
+  box-sizing border-box
+
+
+
