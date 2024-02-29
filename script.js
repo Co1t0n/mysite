@@ -189,14 +189,34 @@ gsap.to(Scene.rotate, {
 gsap.ticker.add(draw);
 
 // dblclick to reset
-const RESET = () => {
-  PIPES.forEach((child) => {
-    child.__ANIMATION.kill();
-    child.SHAPES.forEach(shape => shape.remove());
-  });
-  CURRENT_PIPE = undefined;
+// Function to reset the canvas
+const resetCanvas = () => {
+    PIPES.forEach((child) => {
+        child.__ANIMATION.kill();
+        child.SHAPES.forEach(shape => shape.remove());
+    });
+    CURRENT_PIPE = undefined;
 };
-window.addEventListener("dblclick", RESET);
+
+// Set interval to reset the canvas every 45 seconds
+const intervalID = setInterval(resetCanvas, 45000);
+
+// Reset canvas on double click
+window.addEventListener("dblclick", () => {
+    resetCanvas();
+});
+
+// Clear the interval if the user is inactive for 45 seconds
+const clearCanvasReset = () => {
+    clearInterval(intervalID);
+    intervalID = setInterval(resetCanvas, 45000);
+};
+
+// Add event listeners for user activity
+document.addEventListener("mousemove", clearCanvasReset);
+document.addEventListener("keydown", clearCanvasReset);
+document.addEventListener("mousedown", clearCanvasReset);
+
 Scene.zoom = 4; // Increase the zoom value to move the scene back
 
 // Adjust Canvas Size
