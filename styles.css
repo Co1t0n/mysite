@@ -1,16 +1,21 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 2;
 
   background: #111;
 }
-
+@font-face {
+  font-family:terminus;
+  src:url(/static/font/terminus.ttf);
+  font-weight:400;
+  font-style:normal
+}
 canvas {
  position: absolute;
     touch-action: none;
- width: 100%
+ width: 100%;
 length: 100%; 
-
+filter: blur(1.5rem);
   transform: scale(0.8); /* Adjust the scale factor as needed */
   transform-origin: center; /* Ensure scaling originates from the center */
   z-index: -1; /* Ensure the canvas is behind other content */
@@ -45,8 +50,10 @@ length: 100%;
 }
 
 .dos-prompt {
-  font-family: "Courier New", Courier, monospace;
+                              @import url('https://fonts.cdnfonts.com/css/cascadia-code');
+                                                  font-family: 'Cascadia Code', sans-serif; 
   color: #ffffff; /* White text */
+  font-size: 14px;
   margin: 0;
   background-color: #000000; /* Black background */
 }
@@ -69,8 +76,64 @@ length: 100%;
     color: #ffffff; /* White text */
   }
 }
-*
-  box-sizing border-box
 
 
 
+/* CSS for mobile devices */
+@media only screen and (max-width: 768px) {
+  /* Hide background on mobile */
+  body {
+    background: none;
+  }
+
+  /* Make the title bar sticky on mobile */
+  .title-bar {
+    position: sticky;
+    top: 0;
+    background-color: #008080;
+    color: #ffffff;
+    z-index: 2;
+  }
+@font-face {
+  font-family:terminus;
+  src:url(/static/font/terminus.ttf);
+  font-weight:400;
+  font-style:normal
+}
+  /* Adjust the sidebar styles for mobile */
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: -200px; /* Initially hidden */
+    width: 200px;
+    height: 100%;
+    background-color: #f4f4f4;
+    transition: left 0.3s ease;
+    z-index: 1;
+  }
+
+  #sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  #sidebar ul li {
+    padding: 10px;
+  }
+
+  #sidebar ul li a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  /* Adjust the margin for the window body on mobile */
+  .window-body {
+    padding: 10px;
+    margin-top: 40px; /* Adjust based on the height of the title bar */
+      font-family:terminus;
+      src:url(/static/font/terminus.ttf);
+  font-weight:400;
+  font-style:normal
+  }
+
+}
