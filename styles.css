@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: scale(0.8); /* Adjust the scale factor as needed */
+  transform-origin: center; /* Ensure scaling originates from the center */
+  z-index: -1; /* Ensure the canvas is behind other content */
+}
+
+.window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw; /* Adjust maximum width as needed */
+  max-height: 90vh; /* Adjust maximum height as needed */
+  padding: 20px; /* Adjust padding as needed */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  border: 1px solid #ccc; /* Adjust border as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adjust shadow as needed */
+  overflow: auto; /* Enable scrolling if needed */
+  z-index: 1; /* Ensure the window content appears above the canvas */
+}
+
+.title-bar {
+  background-color: #008080; /* Teal title bar */
+  color: #ffffff; /* White text */
+}
+
+.title-bar-text {
+  padding: 5px 10px;
+}
+
+.window-body {
+  padding: 10px;
+}
+
+.dos-prompt {
+  font-family: "Courier New", Courier, monospace;
+  color: #ffffff; /* White text */
+  margin: 0;
+  background-color: #000000; /* Black background */
+}
+
+.dos-prompt::selection {
+  background-color: #000000; /* Black background for selection */
+  color: #ffffff; /* White text for selection */
+}
+
+#command-line::before {
+  content: '|';
+  animation: blink-caret 0.75s infinite alternate;
+}
+
+@keyframes blink-caret {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #ffffff; /* White text */
+  }
+}
