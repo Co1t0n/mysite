@@ -1,4 +1,3 @@
-console.clear();
 import gsap from "https://cdn.skypack.dev/gsap";
 import zdog from "https://cdn.skypack.dev/zdog";
 
@@ -189,6 +188,11 @@ gsap.to(Scene.rotate, {
 gsap.ticker.add(draw);
 
 // dblclick to reset
+const RESET = () => {
+  resetCanvas();
+};
+window.addEventListener("dblclick", RESET);
+
 // Function to reset the canvas
 const resetCanvas = () => {
     PIPES.forEach((child) => {
@@ -199,11 +203,13 @@ const resetCanvas = () => {
 };
 
 // Set interval to reset the canvas every 45 seconds
-const intervalID = setInterval(resetCanvas, 45000);
+let intervalID = setInterval(resetCanvas, 45000);
 
 // Reset canvas on double click
 window.addEventListener("dblclick", () => {
     resetCanvas();
+    clearInterval(intervalID); // Clear interval when canvas is reset by double click
+    intervalID = setInterval(resetCanvas, 45000); // Reset interval after clearing
 });
 
 // Clear the interval if the user is inactive for 45 seconds
@@ -217,19 +223,7 @@ document.addEventListener("mousemove", clearCanvasReset);
 document.addEventListener("keydown", clearCanvasReset);
 document.addEventListener("mousedown", clearCanvasReset);
 
-Scene.zoom = 20; // Increase the zoom value to move the scene back
-
-// Adjust Canvas Size
 // Adjust Canvas Size
 const canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
-// Move the Scene Back
-const zoomFactor = Math.max(window.innerWidth, window.innerHeight) / 500; // Adjust as needed
-Scene.zoom = zoomFactor;
-
-// Scale Objects
-const SCALE_FACTOR = 3; // Adjust as needed
-Teapot.scale.set(SCALE_FACTOR * zoomFactor); // Scale relative to zoom factor
-PIPES.forEach(pipe => pipe.SHAPE.scale.set(SCALE_FACTOR * zoomFactor)); // Scale relative to zoom factor
