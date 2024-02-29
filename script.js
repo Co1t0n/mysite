@@ -217,7 +217,7 @@ document.addEventListener("mousemove", clearCanvasReset);
 document.addEventListener("keydown", clearCanvasReset);
 document.addEventListener("mousedown", clearCanvasReset);
 
-Scene.zoom = 4; // Increase the zoom value to move the scene back
+Scene.zoom = 20; // Increase the zoom value to move the scene back
 
 // Adjust Canvas Size
 // Adjust Canvas Size
@@ -226,7 +226,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // Move the Scene Back
-const zoomFactor = Math.max(window.innerWidth, window.innerHeight) / 300; // Adjust as needed
+const zoomFactor = Math.max(window.innerWidth, window.innerHeight) / 500; // Adjust as needed
 Scene.zoom = zoomFactor;
 
 // Scale Objects
