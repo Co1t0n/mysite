@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colt.Digital</title>
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<canvas class="background"></canvas>
+
+<div class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">MS-DOS Prompt</div>
+  </div>
+
+  <!-- tab [template] -->
+  <menu role="tablist">
+    <li role="presentation"><a href="#terminal" role="tab" aria-selected="true">Terminal</a></li>
+    <li role="presentation"><a href="#files" role="tab">Files</a></li>
+    <!-- Add more tabs as needed -->
+  </menu>
+
+  <div class="window-body">
+    <div id="terminal" class="tab-content" role="tabpanel">
+      <pre class="dos-prompt">
+   _____    _ _     _____  _                 _ 
+ / ____|    | | |   |  __ \(_)     (_) |      | |
+| |     ___ | | |_  | |  | |_  __ _ _| |_ __ _| |
+| |    / _ \| | __| | |  | | |/ _` | | __/ _` | |        
+| |___| (_) | | |_ _| |__| | | (_| | | || (_| | |            
+ \_____\___/|_|\__(_)_____/|_|\__, |_|\__\__,_|_|     
+                               __/ |             
+                              |___/             
+                                                                                 
+          Microsoft(R) MS-DOS(R) Version 5.00.4009c
+                     (C)Copyright Microsoft Corp 1981-1990
+             Welcome to my site! 
+             Interests
+              *  Programming (Web Dev, Learning python)
+              *  Gaming
+              *  Writing/Reading
+              *  running 
+           Some things about me:
+              * I like retro design
+              *  I make conlangs and scripts for fun               
+              *  I literally will only watch a show if it is funny OR if its really good quality
+      </pre>
+    </div>
+
+    <div id="files" class="tab-content" role="tabpanel">
+      <!-- tab -->
+    </div>
+     <!-- add some more tabs -->
+  </div>
+</div>
+
+<script src="script.js" type="module"></script>
+</body>
+</html>
