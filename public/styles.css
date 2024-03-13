@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  padding: 2;
+  background: #111;
+  overflow: clip;
+}
+.fade {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+canvas {
+      transition: #111 2s ease;
+
+
+  position: flex;
+  touch-action: none;
+ max-width: 100vh;
+ max-height: 100vh; 
+
+filter: blur(0.1rem);
+ overflow: clip;
+  z-index: -1; /* Ensure the canvas is behind other content */
+}
+
+.window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50vw; /* Adjust maximum width as needed */
+  max-height: 90vh; /* Adjust maximum height as needed */
+  padding: 5px; /* Adjust padding as needed */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  box-shadow: 0 0 10px rgba(0, 2, 1, 0.3); /* Adjust shadow as needed */
+  overflow: scroll; /* Enable scrolling if needed */
+  z-index: 1; /* Ensure the window content appears above the canvas */
+}
+
+.title-bar {
+  background-color: #008080; /* Teal title bar */
+  color: #ffffff; /* White text */
+}
+
+.title-bar-text {
+  padding: 5px 10px;
+}
+
+.window-body {
+  padding: 10px;
+}
+
+.dos-prompt {
+                                        font-family: 'Ariel', monospace; 
+  color: #ffffff; /* White text */
+  font-size: 14px;
+  margin: 0;
+  background-color: #000000; /* Black background */
+}
+
+.dos-prompt::selection {
+  background-color: #000000; /* Black background for selection */
+  color: #ffffff; /* White text for selection */
+}
+/* Define the keyframes for the fade in/out animation */
+@keyframes fadeInOut {
+  0% { opacity: 0; } /* Start with transparency */
+  50% { opacity: 1; } /* Fade in to full visibility */
+  100% { opacity: 0; } /* Fade out to transparency */
+}
+
+/* Apply the animation to the element and set the duration */
+.fadeInOut {
+  animation: fadeInOut 4s infinite; /* 4 seconds for the full animation, and repeat infinitely */
+}
+
+
+
+#command-line::before {
+  content: '|';
+  animation: blink-caret 0.75s infinite alternate;
+}
+
+@keyframes blink-caret {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #ffffff; /* White text */
+  }
+}
+
+
+
+/* CSS for mobile devices */
+@media only screen and (max-width: 768px) {
+  /* Hide background on mobile */
+  body {
+    background: none;
+  }
+
+  /* Make the title bar sticky on mobile */
+  .title-bar {
+    position: sticky;
+    top: 0;
+    background-color: #008080;
+    color: #ffffff;
+    z-index: 2;
+  }
+
+  /* Adjust the sidebar styles for mobile */
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: -200px; /* Initially hidden */
+    width: 200px;
+    height: 100%;
+    background-color: #f4f4f4;
+    transition: left 0.3s ease;
+    z-index: 1;
+  }
+
+  #sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  #sidebar ul li {
+    padding: 10px;
+  }
+
+  #sidebar ul li a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  /* Adjust the margin for the window body on mobile */
+  .window-body {
+    padding: 10px;
+    margin-top: 40px; /* Adjust based on the height of the title bar */
+     font-family:terminus;
+      src:url(/static/font/terminus.ttf);
+  font-weight:400;
+  font-style:normal
+  }
+
+}
