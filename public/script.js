@@ -28,7 +28,6 @@ const PIPE_SPEED = 0.004;
 const PIPE_STROKE = 10;
 const TEAPOT_PROBABILITY = 0.99;
 const PIPE_COLORS = [
-  "#e4e9ed",
   "#f27935",
   "#fef160",
   "#7befb2",
@@ -169,17 +168,23 @@ new Shape({
 const movePipes = () => {
   PIPES.forEach(pipe => {
     if(pipe.IS_ALIVE) {
-
       // Increment x position of each pipe
-      pipe.SHAPE.path[0].x += 0.5;  
+      pipe.SHAPE.path.forEach(point => {
+        point.x += (0.5 * canvasWidth) / window.innerWidth; // Scale movement based on canvas size
+      });  
 
       // Reset position if off screen
-      if(pipe.SHAPE.path[0].x > canvas.width) {
-        pipe.SHAPE.path[0].x = 0; 
+      if(pipe.SHAPE.path[0].x > canvasWidth) {
+        const diff = pipe.SHAPE.path[0].x - canvasWidth;
+        pipe.SHAPE.path.forEach(point => {
+          point.x -= diff;
+        });
       }
     }
-  })
-}
+  });
+};
+
+
 
 const draw = () => {
   if (!CURRENT_PIPE || !CURRENT_PIPE.IS_ALIVE) {
@@ -229,6 +234,199 @@ const RESET = () => {
   
 setInterval(RESET, 30000); // 10000 milliseconds = 10 seconds
 
-canvas.style.transform = "scale(3)";
+canvas.style.transform = "scale(2)";
+ // Get the main window elements
+const mainWindow = document.getElementById('main-window');
+const titleBar = document.getElementById('title-bar');
+const windowBody = document.getElementById('window-body');
 
-// Define the function to be executed
+// Get the sidebar window elements
+const sidebarWindow = document.getElementById('sidebar-window');
+const sidebarTitleBar = document.getElementById('sidebar-title-bar');
+
+
+let isDraggingMainWindow = false;
+let isDraggingSidebarWindow = false;
+let offsetXMainWindow, offsetYMainWindow;
+let offsetXSidebarWindow, offsetYSidebarWindow;
+
+// Function to handle mouse down event on title bar for dragging for main window
+function handleMouseDownForDraggingMainWindow(event) {
+  if (event.target.classList.contains('title-bar')) {
+    isDraggingMainWindow = true;
+    offsetXMainWindow = event.clientX - mainWindow.offsetLeft;
+    offsetYMainWindow = event.clientY - mainWindow.offsetTop;
+  }
+}
+
+// Function to handle mouse move event for dragging for main window
+function handleMouseMoveMainWindow(event) {
+  if (isDraggingMainWindow) {
+    mainWindow.style.left = (event.clientX - offsetXMainWindow) + 'px';
+    mainWindow.style.top = (event.clientY - offsetYMainWindow) + 'px';
+  }
+}
+
+// Function to handle mouse up event to stop dragging for main window
+function handleMouseUpMainWindow() {
+  isDraggingMainWindow = false;
+}
+
+// Function to handle mouse down event on title bar for dragging for sidebar window
+function handleMouseDownForDraggingSidebarWindow(event) {
+  if (event.target.classList.contains('title-bar')) {
+    isDraggingSidebarWindow = true;
+    offsetXSidebarWindow = event.clientX - sidebarWindow.offsetLeft;
+    offsetYSidebarWindow = event.clientY - sidebarWindow.offsetTop;
+  }
+}
+
+// Function to handle mouse move event for dragging for sidebar window
+function handleMouseMoveSidebarWindow(event) {
+  if (isDraggingSidebarWindow) {
+    sidebarWindow.style.left = (event.clientX - offsetXSidebarWindow) + 'px';
+    sidebarWindow.style.top = (event.clientY - offsetYSidebarWindow) + 'px';
+  }
+}
+
+// Function to handle mouse up event to stop dragging for sidebar window
+function handleMouseUpSidebarWindow() {
+  isDraggingSidebarWindow = false;
+}
+
+// Add event listeners for mouse events on the title bar for dragging for main window
+titleBar.addEventListener('mousedown', handleMouseDownForDraggingMainWindow);
+// Add event listeners for mouse events on the document for moving for main window
+document.addEventListener('mousemove', handleMouseMoveMainWindow);
+document.addEventListener('mouseup', handleMouseUpMainWindow);
+
+// Add event listeners for mouse events on the title bar for dragging for sidebar window
+sidebarTitleBar.addEventListener('mousedown', handleMouseDownForDraggingSidebarWindow);
+// Add event listeners for mouse events on the document for moving for sidebar window
+document.addEventListener('mousemove', handleMouseMoveSidebarWindow);
+document.addEventListener('mouseup', handleMouseUpSidebarWindow);
+// Get the blog window elements
+const blogWindow = document.getElementById('blog-window');
+const blogTitleBar = document.getElementById('blog-title-bar');
+const blogWindowBody = document.getElementById('blog-window-body');
+
+let isDraggingBlogWindow = false;
+let offsetXBlogWindow, offsetYBlogWindow;
+
+// Function to handle mouse down event on title bar for dragging for blog window
+function handleMouseDownForDraggingBlogWindow(event) {
+    if (event.target.classList.contains('title-bar')) {
+        isDraggingBlogWindow = true;
+        offsetXBlogWindow = event.clientX - blogWindow.offsetLeft;
+        offsetYBlogWindow = event.clientY - blogWindow.offsetTop;
+    }
+}
+
+// Function to handle mouse move event for dragging for blog window
+function handleMouseMoveBlogWindow(event) {
+    if (isDraggingBlogWindow) {
+        blogWindow.style.left = (event.clientX - offsetXBlogWindow) + 'px';
+        blogWindow.style.top = (event.clientY - offsetYBlogWindow) + 'px';
+    }
+}
+
+// Function to handle mouse up event to stop dragging for blog window
+function handleMouseUpBlogWindow() {
+    isDraggingBlogWindow = false;
+}
+
+// Add event listeners for mouse events on the title bar for dragging for blog window
+blogTitleBar.addEventListener('mousedown', handleMouseDownForDraggingBlogWindow);
+// Add event listeners for mouse events on the document for moving for blog window
+document.addEventListener('mousemove', handleMouseMoveBlogWindow);
+document.addEventListener('mouseup', handleMouseUpBlogWindow);
+
+// Add event listeners for blog window controls (minimize, maximize, close)
+const blogMinimizeBtn = document.querySelector('.blog-minimize-btn');
+const blogMaximizeBtn = document.querySelector('.blog-maximize-btn');
+const blogCloseBtn = document.querySelector('.blog-close-btn');
+
+blogMinimizeBtn.addEventListener('click', () => {
+    blogWindow.style.display = 'none';
+});
+
+blogMaximizeBtn.addEventListener('click', () => {
+    blogWindow.style.display = 'block';
+});
+
+blogCloseBtn.addEventListener('click', () => {
+    blogWindow.style.display = 'none';
+});
+
+// Add event listener for blog window button in the toolbar
+const blogWindowButton = document.querySelector('.blog-window-button');
+blogWindowButton.addEventListener('click', () => {
+    if (blogWindow.style.display === 'none') {
+        blogWindow.style.display = 'block';
+    } else {
+        blogWindow.style.display = 'none';
+    }
+});
+// new window
+// Get the blog window elements
+const newwin = document.getElementById('new-window');
+const newbar = document.getElementById('new-title-bar');
+const newbody = document.getElementById('new-window-body');
+
+let isDraggingNewWindow = false;
+let offsetXNewWindow, offsetYNewWindow;
+
+// Function to handle mouse down event on title bar for dragging for blog window
+function handleMouseDownForDraggingNewWindow(event) {
+    if (event.target.classList.contains('title-bar')) {
+        isDraggingNewWindow = true;
+        offsetXNewWindow = event.clientX - newwin.offsetLeft;
+        offsetYNewWindow = event.clientY - newwin.offsetTop;
+    }
+}
+
+// Function to handle mouse move event for dragging for blog window
+function handleMouseMoveNewWindow(event) {
+    if (isDraggingNewWindow) {
+        newwin.style.left = (event.clientX - offsetXNewWindow) + 'px';
+        newwin.style.top = (event.clientY - offsetYNewWindow) + 'px';
+    }
+}
+
+// Function to handle mouse up event to stop dragging for blog window
+function handleMouseUpNewWindow() {
+    isDraggingNewWindow = false;
+}
+
+// Add event listeners for mouse events on the title bar for dragging for blog window
+newbar.addEventListener('mousedown', handleMouseDownForDraggingNewWindow);
+// Add event listeners for mouse events on the document for moving for blog window
+document.addEventListener('mousemove', handleMouseMoveNewWindow);
+document.addEventListener('mouseup', handleMouseUpNewWindow);
+
+// Add event listeners for blog window controls (minimize, maximize, close)
+const NewMinimizeBtn = document.querySelector('.new-minimize-btn');
+const NewMaximizeBtn = document.querySelector('.new-maximize-btn');
+const NewCloseBtn = document.querySelector('.new-close-btn');
+
+NewMinimizeBtn.addEventListener('click', () => {
+    newwin.style.display = 'none';
+});
+
+blogMaximizeBtn.addEventListener('click', () => {
+    newwin.style.display = 'block';
+});
+
+NewCloseBtn.addEventListener('click', () => {
+    newwin.style.display = 'none';
+});
+
+// Add event listener for blog window button in the toolbar
+const NewWindowButton = document.querySelector('.new-window-button');
+NewWindowButton.addEventListener('click', () => {
+    if (newwin.style.display === 'none') {
+        newwin.style.display = 'block';
+    } else {
+        newwin.style.display = 'none';
+    }
+});
