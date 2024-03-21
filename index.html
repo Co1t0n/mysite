@@ -4,15 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Colt.Digital</title>
+     <link rel="stylesheet" href="./public/styles.css" />
+      <script type="module"src="./public/script.js"></script>
    <link rel="stylesheet" href="https://unpkg.com/98.css" />
-    <link rel="stylesheet" href="./public/styles.css"/>
-   <script type="module" src="./public/script.js"></script>
-
-   <script src="https://unpkg.com/cookie_js@1.2.2/cookie.min.js"></script>
-    <script src="https://unpkg.com/socket.io-client@2/dist/socket.io.slim.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-  <link rel="preload" href="https://drive.google.com/file/d/1VTFPk5D_5_mditiY35xPwQCgXS3zWLeh/view?usp=sharing" as="font" type="font/woff2" crossorigin>  
+  <!-- GSAP -->
+<script type="module">
+  import gsap from "https://cdn.skypack.dev/gsap";
+</script>
+
+<!-- Zdog -->
+<script type="module">
+  import zdog from "https://cdn.skypack.dev/zdog";
+</script>
+
   <style> 
        textarea {
            width: auto;
@@ -35,7 +41,6 @@
       text-decoration: none; /* Remove underline */
       position: absoluter; /* Positioning for popup */
     }
-
      /* Popup window styles */
     .popup-window {
       position: absolute;
@@ -51,7 +56,6 @@
       padding: 10px;
       display: none; /* Initially hidden */
     }
-
     .social-icon:hover .popup-window {
       display: block;
     }
@@ -62,9 +66,7 @@
     .toolbar-left button {
       margin-right: 10px;
                   width: auto; /* Adjust width dynamically based on icon size */
-
     }
-
     .main-window-button,
     .sidebar-window-button,
     .blog-window-button,
@@ -93,7 +95,6 @@
       margin-right: 0px;
       vertical-align: center;
     }
-
     /* Start menu styles */
     .start-menu-wrapper {
       position: fixed;
@@ -106,14 +107,12 @@
       display: none;
       padding: 10px;
     }
-
     .start-menu-title {
       background: linear-gradient(90deg, #00007b 0%, #0000ff 5%, #00007b 100%);
       color: #fff; 
       position: relative;
       padding: 5px;
     } 
-
     .start-menu-title span {
       transform: rotate(-90deg);
       transform-origin: left 0;
@@ -121,14 +120,12 @@
       left: 10px;
       bottom: -10px;
     }
-
     .start-menu-link {
       display: block;
       padding: 5px;
       margin-bottom: 5px;
       text-decoration: none;
     }
-
     .start-menu-link img {
       display: block;
       width: 20px;
@@ -140,7 +137,6 @@
 </head>
 <body>
   
-
   <canvas class="background"></canvas>
 <div class="new-window" id="new-window">
     <div class="title-bar" id="new-title-bar"> 
@@ -171,7 +167,6 @@
 <button class="btn" onclick="importNotepad('txt')" title="Import as .txt file">Import as .txt</button>
 <button class="btn" onclick="exportNotepad('code')" title="Export as code">Export as code</button>
 <button class="btn" onclick="exportNotepad('txt')" title="Export as .txt file">Export as .txt</button>
-
 <script>
     // Function to autosave notepad content as you type
     function autoSave() {
@@ -180,7 +175,6 @@
         sessionStorage.setItem('notepadSave', saveData);
         localStorage.setItem('notepadSave', saveData); // Save to local storage as well
     }
-
     // Function to export notepad content
     function exportNotepad(format) {
         const notepadContent = document.getElementById('notepad').value;
@@ -199,7 +193,6 @@
             URL.revokeObjectURL(url);
         }
     }
-
     // Function to import notepad content from base64 string
     function importNotepad(format) {
         let importedContent;
@@ -222,13 +215,11 @@
             fileInput.click();
             return;
         }
-
         if (importedContent !== null) {
             const decodedContent = atob(importedContent);
             document.getElementById('notepad').value = decodedContent;
         }
     }
-
     // Check if there's a saved notepad content and load it
     window.onload = function() {
         const savedData = localStorage.getItem('notepadSave');
@@ -238,13 +229,8 @@
         }
     }
 </script>
-
   </div>
 </div>
-
-
-
-
   <div class="main-window" id="main-window">
     <div class="resize-overlay"></div> <!-- Resizable overlay -->
     <div class="title-bar" id="title-bar">
@@ -278,7 +264,6 @@ Dislikes:
       </pre>
     </div>
   </div> 
-
   <div class="sidebar-window" id="sidebar-window">
     <div class="resize-overlay"></div> <!-- Resizable overlay --> 
     <div class="title-bar" id="sidebar-title-bar">
@@ -292,43 +277,32 @@ Dislikes:
     <div class="window-body" id="sidebar-window-body">
   <div class="container mt-5">
     <h4>CONTACT ME</h4>
-
-
-
-
 <!-- Reddit icon -->
 <button class="button2" style="background-color: #c0c0c0;">
   <a href="https://www.reddit.com/user/lowvermicelli6464" target="_blank" class="social-icon">
     <i class="fab fa-reddit-alien" style="color: black;"></i>
   </a>
 </button>
-
 <!-- GitHub icon -->
 <button class="button2" style="background-color: #c0c0c0;">
   <a href="https://github.com/co1t0n" target="_blank" class="social-icon">
     <i class="fab fa-github-alt" style="color: black;"></i>
   </a>
 </button>
-
 <!-- Discord icon -->
 <button class="button2" style="background-color: #c0c0c0;">
   <a href="https://discord.com/invite/debate" target="_blank" class="social-icon">
     <i class="fab fa-discord" style="color: black;"></i>
   </a>
 </button>
-
-
-
     </a>
         <p> send me an email below </p>
-
       <form action="https://formspree.io/f/mrgnakvg" method="post">
   
     
    
   
   
-
 <form action="https://formspree.io/f/mrgnakvg" method="post">
   <div style="display: flex; flex-direction: column;">
     <label for="name" style="font-size: 14px;">Name:</label>
@@ -347,7 +321,6 @@ Dislikes:
   
   <button type="submit" style="font-size: 14px;">Submit</button>
 </form>
-
   
           
   </div>
@@ -384,7 +357,6 @@ Contact me      </button>
             
     </div>
   </div>
-
   <script>
     const mainDesktopIcon = document.getElementById('msdos-desktop');
     const mainWindowButton = document.querySelector('.main-window-button');
@@ -392,16 +364,13 @@ Contact me      </button>
     const minimizeBtn = document.querySelector('.minimize-btn');
     const maximizeBtn = document.querySelector('.maximize-btn');
     const closeBtn = document.querySelector('.close-btn');
-
     const sidebarWindowButton = document.querySelector('.sidebar-window-button');
     const sidebarWindow = document.getElementById('sidebar-window');
     const sidebarMinimizeBtn = document.querySelector('.sidebar-minimize-btn');
     const sidebarMaximizeBtn = document.querySelector('.sidebar-maximize-btn');
     const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
-
     const startButton = document.getElementById('start-button');
     const startMenu = document.querySelector('.start-menu-wrapper');
-
     // Main Window button click event
     mainWindowButton.addEventListener('click', () => {
       if (mainWindow.style.display === 'none') { 
@@ -422,32 +391,26 @@ Contact me      </button>
         sidebarWindow.style.display = 'none';
       }
     });
-
     // Minimize button click event for the main window
     minimizeBtn.addEventListener('click', () => {
       mainWindow.style.display = 'none';
     });
-
     // Maximize button click event for the main window
     maximizeBtn.addEventListener('click', () => {
       mainWindow.style.display = 'block';
     });
-
     // Close button click event for the main window
     closeBtn.addEventListener('click', () => {
       mainWindow.style.display = 'none';
     });
-
     // Minimize button click event for the sidebar window
     sidebarMinimizeBtn.addEventListener('click', () => {
       sidebarWindow.style.display = 'none';
     });
-
     // Maximize button click event for the sidebar window
     sidebarMaximizeBtn.addEventListener('click', () => {
       sidebarWindow.style.display = 'block';
     });
-
     // Close button click event for the sidebar window
     sidebarCloseBtn.addEventListener('click', () => {
       sidebarWindow.style.display = 'none';
@@ -457,68 +420,10 @@ Contact me      </button>
     startButton.addEventListener('click', () => {
       startMenu.classList.toggle('open');
     });
-      const aboutMeWindowButton = document.querySelector('.about-me-window-button');
-  const aboutMeWindow = document.getElementById('about-me-window');
-  const aboutMeMinimizeBtn = document.querySelector('.about-me-minimize-btn');
-  const aboutMeMaximizeBtn = document.querySelector('.about-me-maximize-btn');
-  const aboutMeCloseBtn = document.querySelector('.about-me-close-btn');
-  const aboutMeTitleBar = document.querySelector('#about-me-title-bar');
-
-  let isDragging = false;
-  let offsetX, offsetY;
-
-  // Title bar mouse down event to start dragging
-  aboutMeTitleBar.addEventListener('mousedown', (e) => {
-    if (aboutMeWindow.style.display === 'block') {
-      isDragging = true;
-      offsetX = e.clientX - aboutMeWindow.offsetLeft;
-      offsetY = e.clientY - aboutMeWindow.offsetTop;
-    }
-  });
-
-  // Mouse move event to drag the window
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      aboutMeWindow.style.left = e.clientX - offsetX + 'px';
-      aboutMeWindow.style.top = e.clientY - offsetY + 'px';
-    }
-  });
-
-  // Mouse up event to stop dragging
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
-
-  // About Me Window button click event
-  aboutMeWindowButton.addEventListener('click', () => {
-    if (aboutMeWindow.style.display === 'none') {
-      aboutMeWindow.style.display = 'block'; // Show the window
-    } else {
-      aboutMeWindow.style.display = 'none'; // Hide the window
-    }
-  });
-            // Minimize button click event for the About Me window
-  aboutMeMinimizeBtn.addEventListener('click', () => {
-    aboutMeWindow.style.display = 'none'; // Hide the window
-  });
-
-  // Maximize button click event for the About Me window
-  aboutMeMaximizeBtn.addEventListener('click', () => {
-    // Implement maximize functionality here if needed
-  });
-
-  // Close button click event for the About Me window
-  aboutMeCloseBtn.addEventListener('click', () => {
-    aboutMeWindow.style.display = 'none'; // Hide the window
-  });
-    
   </script>
 <script>
 var bh_id = "6084mRg7pz0UkwMzQxMQ";
 </script>
-
-
-
 <script src="https://www.bloghandy.com/api/bh_blogengine.js"></script><div class="blog-window" id="blog-window"> 
     <div class="resize-overlay"></div> <!-- Resizable overlay --> 
     <div class="title-bar" id="blog-title-bar">
@@ -542,7 +447,52 @@ var bh_id = "6084mRg7pz0UkwMzQxMQ";
  
    </div>
          <script>
-
+  const aboutMeWindowButton = document.querySelector('.about-me-window-button');
+  const aboutMeWindow = document.getElementById('about-me-window');
+  const aboutMeMinimizeBtn = document.querySelector('.about-me-minimize-btn');
+  const aboutMeMaximizeBtn = document.querySelector('.about-me-maximize-btn');
+  const aboutMeCloseBtn = document.querySelector('.about-me-close-btn');
+  const aboutMeTitleBar = document.querySelector('#about-me-title-bar');
+  let isDragging = false;
+  let offsetX, offsetY;
+  // Title bar mouse down event to start dragging
+  aboutMeTitleBar.addEventListener('mousedown', (e) => {
+    if (aboutMeWindow.style.display === 'block') {
+      isDragging = true;
+      offsetX = e.clientX - aboutMeWindow.offsetLeft;
+      offsetY = e.clientY - aboutMeWindow.offsetTop;
+    }
+  });
+  // Mouse move event to drag the window
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      aboutMeWindow.style.left = e.clientX - offsetX + 'px';
+      aboutMeWindow.style.top = e.clientY - offsetY + 'px';
+    }
+  });
+  // Mouse up event to stop dragging
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+  // About Me Window button click event
+  aboutMeWindowButton.addEventListener('click', () => {
+    if (aboutMeWindow.style.display === 'none') {
+      aboutMeWindow.style.display = 'block'; // Show the window
+    } else {
+      aboutMeWindow.style.display = 'none'; // Hide the window
+    }
+  });
+            // Minimize button click event for the About Me window
+  aboutMeMinimizeBtn.addEventListener('click', () => {
+    aboutMeWindow.style.display = 'none'; // Hide the window
+  });
+  // Maximize button click event for the About Me window
+  aboutMeMaximizeBtn.addEventListener('click', () => {
+    // Implement maximize functionality here if needed
+  });
+  // Close button click event for the About Me window
+  aboutMeCloseBtn.addEventListener('click', () => {
+    aboutMeWindow.style.display = 'none'; // Hide the window
+  });
 </script>  
 </html> 
-  
