@@ -1,6 +1,5 @@
 console.clear();
-import gsap from "https://cdn.skypack.dev/gsap";
-import zdog from "https://cdn.skypack.dev/zdog";
+
 // Get body element
 const body = document.querySelector('body');
 // Set canvas width and height 
