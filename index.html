@@ -14,6 +14,14 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
   <link rel="preload" href="https://drive.google.com/file/d/1VTFPk5D_5_mditiY35xPwQCgXS3zWLeh/view?usp=sharing" as="font" type="font/woff2" crossorigin>  
   <style> 
+       textarea {
+           width: auto;
+    min-width:25vw;
+        height: auto;
+    min-height: 25vh;
+        margin-bottom: 10px;
+        padding: 5px; 
+    }
    /* Adjustments for toolbar layout */
     .toolbar-left {
       display: flex;
@@ -60,7 +68,9 @@
     .main-window-button,
     .sidebar-window-button,
     .blog-window-button,
-    .new-window-button
+    .new-window-button,
+    .about-me-window-button,
+    .di-window-button
     {
       display: flex;
       align-items: center;
@@ -73,7 +83,9 @@
     .main-window-button img,
     .sidebar-window-button img,
     .blog-window-button img,
-    .new-window-button img {
+    .new-window-button img,
+    .about-me-window-button img,
+    .di-window-button img{
       display: inline-block;
       height: 20px;
       width: auto; 
@@ -143,6 +155,93 @@
         <iframe src="https://theoldnet.com/browser/"></iframe>
     </div>
 </div>
+<div class="about-me-window" id="about-me-window" style="display: none;">  <div class="resize-overlay"></div> <!-- Resizable overlay --> 
+  <div class="title-bar" id="about-me-title-bar">
+    <div class="title-bar-text">About Me</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize" class="about-me-minimize-btn"></button>
+      <button aria-label="Maximize" class="about-me-maximize-btn"></button>
+      <button aria-label="Close" class="about-me-close-btn"></button>
+    </div>
+  </div> 
+  <div class="window-body" id="about-me-window-body">
+ 
+<textarea id="notepad" oninput="autoSave()"></textarea><br>
+<button class="btn" onclick="importNotepad('code')" title="Import as code">Import as code</button>
+<button class="btn" onclick="importNotepad('txt')" title="Import as .txt file">Import as .txt</button>
+<button class="btn" onclick="exportNotepad('code')" title="Export as code">Export as code</button>
+<button class="btn" onclick="exportNotepad('txt')" title="Export as .txt file">Export as .txt</button>
+
+<script>
+    // Function to autosave notepad content as you type
+    function autoSave() {
+        const notepadContent = document.getElementById('notepad').value;
+        const saveData = btoa(notepadContent); // Encoding to base64
+        sessionStorage.setItem('notepadSave', saveData);
+        localStorage.setItem('notepadSave', saveData); // Save to local storage as well
+    }
+
+    // Function to export notepad content
+    function exportNotepad(format) {
+        const notepadContent = document.getElementById('notepad').value;
+        if (format === 'code') {
+            const base64Content = btoa(notepadContent);
+            alert('Exported content as code:\n\n' + base64Content);
+        } else if (format === 'txt') {
+            const blob = new Blob([notepadContent], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'notepad_export.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    }
+
+    // Function to import notepad content from base64 string
+    function importNotepad(format) {
+        let importedContent;
+        if (format === 'code') {
+            importedContent = prompt('Enter code:');
+        } else if (format === 'txt') {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = '.txt';
+            fileInput.onchange = function(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    importedContent = event.target.result;
+                    const decodedContent = atob(importedContent);
+                    document.getElementById('notepad').value = decodedContent;
+                };
+                reader.readAsText(file);
+            };
+            fileInput.click();
+            return;
+        }
+
+        if (importedContent !== null) {
+            const decodedContent = atob(importedContent);
+            document.getElementById('notepad').value = decodedContent;
+        }
+    }
+
+    // Check if there's a saved notepad content and load it
+    window.onload = function() {
+        const savedData = localStorage.getItem('notepadSave');
+        if (savedData) {
+            const notepadContent = atob(savedData); // Decoding from base64
+            document.getElementById('notepad').value = notepadContent;
+        }
+    }
+</script>
+
+  </div>
+</div>
+
 
 
 
@@ -213,7 +312,7 @@ Dislikes:
 
 <!-- Discord icon -->
 <button class="button2" style="background-color: #c0c0c0;">
-  <a href="https://discord.gg/m7kNKbGew3" target="_blank" class="social-icon">
+  <a href="https://discord.com/invite/debate" target="_blank" class="social-icon">
     <i class="fab fa-discord" style="color: black;"></i>
   </a>
 </button>
@@ -279,11 +378,86 @@ Contact me      </button>
           <button class="new-window-button">
             <img src="https://win98icons.alexmeub.com/icons/png/msie1-5.png" alt="Blog Window Icon">
             <span>   ⠀Browser</span>
+               <button class="about-me-window-button">
+            <img src="https://win98icons.alexmeub.com/icons/png/msie1-5.png" alt="Blog Window Icon">
+            <span>   ⠀About me</span>
+            
     </div>
   </div>
 
+  <script>
+    const mainDesktopIcon = document.getElementById('msdos-desktop');
+    const mainWindowButton = document.querySelector('.main-window-button');
+    const mainWindow = document.getElementById('main-window');
+    const minimizeBtn = document.querySelector('.minimize-btn');
+    const maximizeBtn = document.querySelector('.maximize-btn');
+    const closeBtn = document.querySelector('.close-btn');
+
+    const sidebarWindowButton = document.querySelector('.sidebar-window-button');
+    const sidebarWindow = document.getElementById('sidebar-window');
+    const sidebarMinimizeBtn = document.querySelector('.sidebar-minimize-btn');
+    const sidebarMaximizeBtn = document.querySelector('.sidebar-maximize-btn');
+    const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
+
+    const startButton = document.getElementById('start-button');
+    const startMenu = document.querySelector('.start-menu-wrapper');
+
+    // Main Window button click event
+    mainWindowButton.addEventListener('click', () => {
+      if (mainWindow.style.display === 'none') { 
+        mainWindow.style.display = 'block';
+      } else {
+        mainWindow.style.display = 'none';
+      }
+    });
+  function showNewWindow() {
+      const newWindow = document.getElementById('new-window');
+      newWindow.style.display = 'block';
+    }
+    // Sidebar Window button click event
+    sidebarWindowButton.addEventListener('click', () => {
+      if (sidebarWindow.style.display === 'none') {
+        sidebarWindow.style.display = 'block';
+      } else {
+        sidebarWindow.style.display = 'none';
+      }
+    });
+
+    // Minimize button click event for the main window
+    minimizeBtn.addEventListener('click', () => {
+      mainWindow.style.display = 'none';
+    });
+
+    // Maximize button click event for the main window
+    maximizeBtn.addEventListener('click', () => {
+      mainWindow.style.display = 'block';
+    });
+
+    // Close button click event for the main window
+    closeBtn.addEventListener('click', () => {
+      mainWindow.style.display = 'none';
+    });
+
+    // Minimize button click event for the sidebar window
+    sidebarMinimizeBtn.addEventListener('click', () => {
+      sidebarWindow.style.display = 'none';
+    });
+
+    // Maximize button click event for the sidebar window
+    sidebarMaximizeBtn.addEventListener('click', () => {
+      sidebarWindow.style.display = 'block';
+    });
+
+    // Close button click event for the sidebar window
+    sidebarCloseBtn.addEventListener('click', () => {
+      sidebarWindow.style.display = 'none';
+    }); 
  
-      
+    // Start button click event to toggle start menu
+    startButton.addEventListener('click', () => {
+      startMenu.classList.toggle('open');
+    });
+  </script>
 <script>
 var bh_id = "6084mRg7pz0UkwMzQxMQ";
 </script>
@@ -304,113 +478,69 @@ var bh_id = "6084mRg7pz0UkwMzQxMQ";
       <div id="bh-posts"></div>
             <div id="bh-recent-post-list">
               <style>
-                            @import url('https://fonts.cdnfonts.com/css/w95fa');
+                            @import url('https://fonts.cdnfonts.com/css/w95fa');  
 </style>
                 
           
   
        </div>   
-      </body>
-   <script>
-     // Function to handle window actions (minimize, maximize, close)
-function handleWindowActions(windowElement, minimizeBtn, maximizeBtn, closeBtn) {
-    minimizeBtn.addEventListener('click', () => {
-        windowElement.style.display = 'none';
-    });
+ 
+   </div>
+         <script>
+  const aboutMeWindowButton = document.querySelector('.about-me-window-button');
+  const aboutMeWindow = document.getElementById('about-me-window');
+  const aboutMeMinimizeBtn = document.querySelector('.about-me-minimize-btn');
+  const aboutMeMaximizeBtn = document.querySelector('.about-me-maximize-btn');
+  const aboutMeCloseBtn = document.querySelector('.about-me-close-btn');
+  const aboutMeTitleBar = document.querySelector('#about-me-title-bar');
 
-    maximizeBtn.addEventListener('click', () => {
-        windowElement.style.display = 'block';
-    });
+  let isDragging = false;
+  let offsetX, offsetY;
 
-    closeBtn.addEventListener('click', () => {
-        windowElement.style.display = 'none';
-    });
-}
-
-// Function to handle showing or hiding the window
-function handleWindowButton(windowElement, windowButton) {
-    windowButton.addEventListener('click', () => {
-        if (windowElement.style.display === 'none') {
-            windowElement.style.display = 'block';
-        } else {
-            windowElement.style.display = 'none';
-        }
-    });
-}
-
-// Function to handle dragging the window
-function handleWindowDragging(windowTitleBar, windowElement) {
-    let isDraggingWindow = false;
-    let offsetXWindow, offsetYWindow;
-
-    function handleMouseDownForDraggingWindow(event) {
-        if (event.target.classList.contains('title-bar')) {
-            isDraggingWindow = true;
-            offsetXWindow = event.clientX - windowElement.offsetLeft;
-            offsetYWindow = event.clientY - windowElement.offsetTop;
-        }
+  // Title bar mouse down event to start dragging
+  aboutMeTitleBar.addEventListener('mousedown', (e) => {
+    if (aboutMeWindow.style.display === 'block') {
+      isDragging = true;
+      offsetX = e.clientX - aboutMeWindow.offsetLeft;
+      offsetY = e.clientY - aboutMeWindow.offsetTop;
     }
+  });
 
-    function handleMouseMoveWindow(event) {
-        if (isDraggingWindow) {
-            windowElement.style.left = (event.clientX - offsetXWindow) + 'px';
-            windowElement.style.top = (event.clientY - offsetYWindow) + 'px';
-        }
+  // Mouse move event to drag the window
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      aboutMeWindow.style.left = e.clientX - offsetX + 'px';
+      aboutMeWindow.style.top = e.clientY - offsetY + 'px';
     }
+  });
 
-    function handleMouseUpWindow() {
-        isDraggingWindow = false;
+  // Mouse up event to stop dragging
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // About Me Window button click event
+  aboutMeWindowButton.addEventListener('click', () => {
+    if (aboutMeWindow.style.display === 'none') {
+      aboutMeWindow.style.display = 'block'; // Show the window
+    } else {
+      aboutMeWindow.style.display = 'none'; // Hide the window
     }
+  });
+            // Minimize button click event for the About Me window
+  aboutMeMinimizeBtn.addEventListener('click', () => {
+    aboutMeWindow.style.display = 'none'; // Hide the window
+  });
 
-    windowTitleBar.addEventListener('mousedown', handleMouseDownForDraggingWindow);
-    document.addEventListener('mousemove', handleMouseMoveWindow);
-    document.addEventListener('mouseup', handleMouseUpWindow);
-}
+  // Maximize button click event for the About Me window
+  aboutMeMaximizeBtn.addEventListener('click', () => {
+    // Implement maximize functionality here if needed
+  });
 
-// Get references to the main window elements
-const mainWindow = document.getElementById('main-window');
-const mainTitleBar = document.getElementById('title-bar');
-const mainMinimizeBtn = document.querySelector('.minimize-btn');
-const mainMaximizeBtn = document.querySelector('.maximize-btn');
-const mainCloseBtn = document.querySelector('.close-btn');
-
-// Get references to the sidebar window elements
-const sidebarWindow = document.getElementById('sidebar-window');
-const sidebarTitleBar = document.getElementById('sidebar-title-bar');
-const sidebarMinimizeBtn = document.querySelector('.sidebar-minimize-btn');
-const sidebarMaximizeBtn = document.querySelector('.sidebar-maximize-btn');
-const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
-
-// Get references to the blog window elements
-const blogWindow = document.getElementById('blog-window');
-const blogTitleBar = document.getElementById('blog-title-bar');
-const blogMinimizeBtn = document.querySelector('.blog-minimize-btn');
-const blogMaximizeBtn = document.querySelector('.blog-maximize-btn');
-const blogCloseBtn = document.querySelector('.blog-close-btn');
-
-// Get references to the new window elements
-const newWindow = document.getElementById('new-window');
-const newTitleBar = document.getElementById('new-title-bar');
-const newMinimizeBtn = document.querySelector('.new-minimize-btn');
-const newMaximizeBtn = document.querySelector('.new-maximize-btn');
-const newCloseBtn = document.querySelector('.new-close-btn');
-
-// Apply window actions, window button functionality, and window dragging for each window type
-handleWindowActions(mainWindow, mainMinimizeBtn, mainMaximizeBtn, mainCloseBtn);
-handleWindowActions(sidebarWindow, sidebarMinimizeBtn, sidebarMaximizeBtn, sidebarCloseBtn);
-handleWindowActions(blogWindow, blogMinimizeBtn, blogMaximizeBtn, blogCloseBtn);
-handleWindowActions(newWindow, newMinimizeBtn, newMaximizeBtn, newCloseBtn);
-
-handleWindowButton(mainWindow, document.querySelector('.main-window-button'));
-handleWindowButton(sidebarWindow, document.querySelector('.sidebar-window-button'));
-handleWindowButton(blogWindow, document.querySelector('.blog-window-button'));
-handleWindowButton(newWindow, document.querySelector('.new-window-button'));
-
-handleWindowDragging(mainTitleBar, mainWindow);
-handleWindowDragging(sidebarTitleBar, sidebarWindow);
-handleWindowDragging(blogTitleBar, blogWindow);
-handleWindowDragging(newTitleBar, newWindow);
-
-      </script>
+  // Close button click event for the About Me window
+  aboutMeCloseBtn.addEventListener('click', () => {
+    aboutMeWindow.style.display = 'none'; // Hide the window
+  });
+</script>  
 </html> 
   
