@@ -1,0 +1,515 @@
+body {
+  margin: 0;
+  background: #111;
+   overflow: hidden;
+}
+.new-window iframe {
+    border: none;
+  overflow: hidden;
+    width: 80vw;
+    height: 80vh;
+}
+.new-window  {\ height: 90vh;
+  max-height: 90vw;
+width: auto;   
+  position: absolute;
+  overflow: auto;
+  resize: both;
+
+  left: 13%; /* Adjust left position as needed */
+  transform: translate(-50%, -50%);
+   
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 3;
+  border: 2px solid transparent;
+}
+.sidebar-window {
+  
+ 
+ height: 90vh;
+  max-height: 90vw;
+width: auto;   
+  position: absolute;
+  overflow: auto;
+  resize: both;
+  top: 47%;
+  left: 13%; /* Adjust left position as needed */
+  transform: translate(-50%, -50%);
+   
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 3;
+  border: 2px solid transparent;
+}
+.about-me-window {
+  
+ 
+ height: 90vh;
+  max-height: 90vw;
+width: auto;   
+  position: absolute;
+  overflow: auto;
+  resize: both;
+  top: 47%;
+  left: 13%; /* Adjust left position as needed */
+  transform: translate(-50%, -50%);
+   
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 5;
+  border: 2px solid transparent;
+}
+#sidebar-title-bar {
+  
+  background-color: #008080; /* Adjust background color as needed */
+  color: #ffffff;
+  cursor: default;
+}
+#blog-title-bar {
+  
+  background-color: #008080; /* Adjust background color as needed */
+  color: #ffffff;
+  cursor: default;
+}
+#sidebar-title-bar .title-bar-text {
+  padding: 5px 10px;
+}
+.diary-title-bar .title-bar-text {
+  padding: 5px 10px;
+}
+#sidebar-title-bar .title-bar-text {
+  padding: 5px 10px;
+}
+#sidebar-window-body {
+  padding: 1px;
+}
+#blog-title-bar .title-bar-text {
+  padding: 5px 10px;
+}
+#blog-title-bar .title-bar-text {
+  padding: 5px 10px;
+}
+#blog-window-body {
+  padding: 1px;
+}
+/* Main window styles */
+.main-window {
+  position: absolute;
+overflow: auto;
+  resize: both;
+  top: 46%;
+  left: 44%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 35vw;
+ 
+  height: 90vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  
+  z-index: 1;
+  border: 2px solid transparent;
+}
+.blog-window {
+                                                                      font-family: 'W95FA', sans-serif;
+  position: absolute;
+overflow: auto;
+  resize: both;
+  top: 47%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 35vw;
+ 
+  height: 90vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  
+  z-index: 1;
+  border: 2px solid transparent;
+}
+/* Title bar styles */
+.title-bar {
+  background-color: #008080;
+  color: #ffffff;
+  cursor: default; /* Add cursor default */
+}
+.title-bar-text {
+  padding: 5px 10px;
+}
+
+/* Window body styles */
+.window-body {
+  padding: 10px;
+  overflow: auto;
+  height: auto;
+  width: auto;
+}
+.blog-window-body {
+  padding: 10px;
+  overflow: auto;
+  height: auto;
+  width: auto;
+}
+.windows-prompt {
+  color: white;
+  font-size: 12px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  height: auto; /* Change the height value to auto */
+  width: auto;
+  overflow: auto;
+}
+window-header {
+  font-family: "MS Sans Serif", sans-serif; /* Windows 98 font */  color: white;
+  font-size: 12px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  height: auto; /* Change the height value to auto */
+  width: auto;
+  overflow: auto;
+}
+.windows-prompt h1 {
+ font-size: 7px; /* Adjust the font size as desired */ 
+}
+
+#toolbar {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  height: 35px;
+  z-index: 2;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 2px solid transparent;
+}
+.title-button {
+  background: none;
+  border: none;
+  width: 30px;
+  height: 20px;
+  margin-right: 5px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+#blog-posts .h2 {
+                                                                      font-family: 'W95FA',                                                                     font-family: 'W95FA', sans-serif;sans-serif;
+}
+/* New window styles */
+.new-window {
+  position: absolute;
+  overflow: hidden;
+  resize: both;
+  top: 47%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  max-width: 100vw;
+  max-height: 100vh;
+ 
+  background-color: rgba(255, 255, 255, 0.9);
+  
+  z-index: 2;
+  border: 2px solid transparent;
+}
+ #new-window {
+      display: none;
+    }
+/* Title bar styles */
+.new-window-title-bar {
+  background-color: #008080;
+  color: #ffffff;
+  padding: 5px;
+  cursor: default;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+
+
+/* Toolbar icon styles */
+.toolbar-icon {
+  background: no-repeat center/20px;
+  width: 25px;
+  height: 25px;
+  border: none;
+  margin-top: 3px;
+}
+
+
+/* Adjustments for smaller screens */
+@media only screen and (max-width: 768px) {
+  .main-window {
+    width: 90vw;
+    height: 80vh;
+  }
+}
+
+
+
+
+*{
+  box-sizing: border-box;
+}
+
+
+
+#boot-ready{
+  width: 100%;
+  z-index: 98;
+  position: fixed;
+  height: 100vh;
+  background: #000;
+}
+
+strong{
+  font-weight: bold;
+}
+
+
+
+
+
+@keyframes loading { 
+    0%{background-position:0% 51%}
+    100%{background-position:-200% 51%}
+}
+
+
+
+
+#toolbar{
+  background: rgba(255, 255, 255, 0.8); /* Set the same background color as the main window */
+  color: #000; /* Change text color to match window */
+  height: 35px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 2px solid transparent; /* Adjust border color */
+}
+
+
+  .toolbar-start-menu{
+    float: left;
+  
+     .start-button{
+      
+      background: url(https://win98icons.alexmeub.com/icons/png/windows-0.png) no-repeat 2px center / 24px;
+      padding-left: 28px;
+      padding-right: 5px;
+      height: 29px;
+      margin: 2px 3px;
+      font-weight: bold;
+      border: 2px solid #7c7c7c;
+      border-top-color: #fff;
+      border-left-color: #fff;
+      
+      &:hover{
+        background-color: darken(#c0c0c0, 10%);
+      }
+    }
+    
+    .start-menu-wrapper{
+      background: rgba(255, 255, 255, 0.8); 
+      color: #000; 
+     
+      position: fixed;
+      left: 2px;
+      bottom: 36px;
+      width: 190px;
+      min-height: 200px;
+      
+      .start-menu-title{
+        height: 100%;
+        padding: 5px 5px;
+        background: linear-gradient(90deg, #00007b 0%, #0000ff 5%, #00007b 100%);
+        color: #fff;
+        width: 40px;
+        float: left;
+        text-transform: uppercase;
+        font-size: 20px;
+        position: absolute;
+
+        span{
+          transform: rotate(-90deg);
+          transform-origin: left 0;
+          position: absolute;
+          left: 10px;
+          bottom: -10px;
+        }
+      }
+      
+      .start-menu{
+        
+        margin-left: 40px;
+      }
+    }
+  }
+  
+
+  
+
+  
+/* Toolbar icon styles */
+.toolbar-icon {
+  background: no-repeat center / auto 20px;
+  width: 25px; /* Keep width consistent for all icons */
+  height: 25px;
+  border: none;
+  margin-top: 3px;
+  margin: 3px 2px; /* Adjust margin as needed */
+
+  &.ie {
+    background-image: url(https://win98icons.alexmeub.com/icons/png/msie1-4.png);
+  }
+
+  &.outlook {
+    background-image: url(https://win98icons.alexmeub.com/icons/png/outlook_express-0.png);
+  }
+
+  &.desktop {
+    background-image: url(https://win98icons.alexmeub.com/icons/png/desktop-4.png);
+  }
+
+  &.channels {
+    background-image: url(https://win98icons.alexmeub.com/icons/png/channels-5.png);
+  }
+
+  &.msdos {
+    background-image: url(https://win98icons.alexmeub.com/icons/png/console_prompt-0.png);
+    width: auto; /* Adjust width dynamically based on icon size */
+  }
+}
+
+
+}
+
+
+
+
+    
+    .time{
+      padding: 6px 10px;
+    }
+  }
+}
+
+
+
+.window{
+  border: 2px solid #7c7c7c;
+  border-top-color: #fff;
+  border-bottom-color: #131313;
+  border-left-color: #fff;
+  width: 90%;
+  max-width: 500px;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  resize: both;
+  
+  .window-toolbar{
+    
+    background: #000080;
+    color: #fff;
+    padding: 4px;
+    font-weight: bold;
+  }
+  
+  .window-buttons{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    
+    .window-button{
+      background: no-repeat center #ccc;
+      border: 2px solid #7c7c7c;
+      border-top-color: #fff;
+      border-left-color: #fff;
+      height: 17px;
+      width: 17px;
+      float: right;
+      margin-left: 2px;
+      
+      &.close{
+        background-image: url(https://win98icons.alexmeub.com/images/close-icon.png);
+      }
+      
+      &.help{
+        background-image: url(https://win98icons.alexmeub.com/images/question-icon.png);
+      }
+    }
+  }
+  
+  .window-tabs{
+    overflow: hidden;
+    padding-top: 2px;
+    
+    .tabs-button{
+      background: none;
+      border: none;
+      padding: 5px 8px;
+      float: left;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      border-radius: 3px 3px 0 0;
+      border-right: 2px solid #666;
+      margin: 0;
+      
+      &:first-child{
+        border-left: 1px solid #fff;
+      }
+      center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+      .button2 {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+      &.active{
+        border-bottom: none;
+        padding-top: 7px;
+        margin-top: -2px;
+      }
+    }
+  }
+  
+  .window-content{
+    padding: 15px;
+    border: 1px solid #fff;
+    border-top: none;
+  }
+  
+  .window-wrapper{
+    padding: 10px;
+    
+    fieldset{
+      border: 1px solid #7c7c7c;
+      padding: 10px;
+      position: relative;
+      
+      &::before {
+        content: " ";
+        position: absolute;
+        z-index: -1;
+        bottom: -2px;
+        left: 0;
+        width: calc(100% + 1px);
+        height: calc(100% - 7px);
+        border: 1px solid #fff;
+      }
+      
+      legend{
+        padding: 0 3px;
+        background: #c0c0c0;
+      }
+      /* Add this style for the toolbar icon */
+
+
