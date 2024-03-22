@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Colt.Digital</title>
        <link rel="stylesheet" href="./public/styles.css" />
-
    <link rel="stylesheet" href="https://unpkg.com/98.css" />
-
    <script type="module" src="./public/script.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
@@ -33,7 +31,6 @@
       text-decoration: none; /* Remove underline */
       position: absoluter; /* Positioning for popup */
     }
-
      /* Popup window styles */
     .popup-window {
       position: absolute;
@@ -49,7 +46,6 @@
       padding: 10px;
       display: none; /* Initially hidden */
     }
-
     .social-icon:hover .popup-window {
       display: block;
     }
@@ -60,9 +56,7 @@
     .toolbar-left button {
       margin-right: 10px;
                   width: auto; /* Adjust width dynamically based on icon size */
-
     }
-
     .main-window-button,
     .sidebar-window-button,
     .blog-window-button,
@@ -91,7 +85,6 @@
       margin-right: 0px;
       vertical-align: center;
     }
-
     /* Start menu styles */
     .start-menu-wrapper {
       position: fixed;
@@ -104,14 +97,12 @@
       display: none;
       padding: 10px;
     }
-
     .start-menu-title {
       background: linear-gradient(90deg, #00007b 0%, #0000ff 5%, #00007b 100%);
       color: #fff; 
       position: relative;
       padding: 5px;
     } 
-
     .start-menu-title span {
       transform: rotate(-90deg);
       transform-origin: left 0;
@@ -119,14 +110,12 @@
       left: 10px;
       bottom: -10px;
     }
-
     .start-menu-link {
       display: block;
       padding: 5px;
       margin-bottom: 5px;
       text-decoration: none;
     }
-
     .start-menu-link img {
       display: block;
       width: 20px;
@@ -138,7 +127,6 @@
 </head>
 <body>
   
-
   <canvas class="background"></canvas>
 <div class="new-window" id="new-window">
     <div class="title-bar" id="new-title-bar"> 
@@ -169,7 +157,6 @@
 <button class="btn" onclick="importNotepad('txt')" title="Import as .txt file">Import as .txt</button>
 <button class="btn" onclick="exportNotepad('code')" title="Export as code">Export as code</button>
 <button class="btn" onclick="exportNotepad('txt')" title="Export as .txt file">Export as .txt</button>
-
 <script>
     // Function to autosave notepad content as you type
     function autoSave() {
@@ -178,7 +165,6 @@
         sessionStorage.setItem('notepadSave', saveData);
         localStorage.setItem('notepadSave', saveData); // Save to local storage as well
     }
-
     // Function to export notepad content
     function exportNotepad(format) {
         const notepadContent = document.getElementById('notepad').value;
@@ -197,7 +183,6 @@
             URL.revokeObjectURL(url);
         }
     }
-
     // Function to import notepad content from base64 string
     function importNotepad(format) {
         let importedContent;
@@ -220,13 +205,11 @@
             fileInput.click();
             return;
         }
-
         if (importedContent !== null) {
             const decodedContent = atob(importedContent);
             document.getElementById('notepad').value = decodedContent;
         }
     }
-
     // Check if there's a saved notepad content and load it
     window.onload = function() {
         const savedData = localStorage.getItem('notepadSave');
@@ -236,13 +219,8 @@
         }
     }
 </script>
-
   </div>
 </div>
-
-
-
-
   <div class="main-window" id="main-window">
     <div class="resize-overlay"></div> <!-- Resizable overlay -->
     <div class="title-bar" id="title-bar">
@@ -276,7 +254,6 @@ Dislikes:
       </pre>
     </div>
   </div> 
-
   <div class="sidebar-window" id="sidebar-window">
     <div class="resize-overlay"></div> <!-- Resizable overlay --> 
     <div class="title-bar" id="sidebar-title-bar">
@@ -290,43 +267,32 @@ Dislikes:
     <div class="window-body" id="sidebar-window-body">
   <div class="container mt-5">
     <h4>CONTACT ME</h4>
-
-
-
-
 <!-- Reddit icon -->
 <button class="button2" style="background-color: #c0c0c0;">
   <a href="https://www.reddit.com/user/lowvermicelli6464" target="_blank" class="social-icon">
     <i class="fab fa-reddit-alien" style="color: black;"></i>
   </a>
 </button>
-
 <!-- GitHub icon -->
 <button class="button2" style="background-color: #c0c0c0;">
   <a href="https://github.com/co1t0n" target="_blank" class="social-icon">
     <i class="fab fa-github-alt" style="color: black;"></i>
   </a>
 </button>
-
 <!-- Discord icon -->
 <button class="button2" style="background-color: #c0c0c0;">
   <a href="https://discord.com/invite/debate" target="_blank" class="social-icon">
     <i class="fab fa-discord" style="color: black;"></i>
   </a>
 </button>
-
-
-
     </a>
         <p> send me an email below </p>
-
       <form action="https://formspree.io/f/mrgnakvg" method="post">
   
     
    
   
   
-
 <form action="https://formspree.io/f/mrgnakvg" method="post">
   <div style="display: flex; flex-direction: column;">
     <label for="name" style="font-size: 14px;">Name:</label>
@@ -345,7 +311,6 @@ Dislikes:
   
   <button type="submit" style="font-size: 14px;">Submit</button>
 </form>
-
   
           
   </div>
@@ -382,7 +347,6 @@ Contact me      </button>
             
     </div>
   </div>
-
   <script>
     const mainDesktopIcon = document.getElementById('msdos-desktop');
     const mainWindowButton = document.querySelector('.main-window-button');
@@ -390,16 +354,13 @@ Contact me      </button>
     const minimizeBtn = document.querySelector('.minimize-btn');
     const maximizeBtn = document.querySelector('.maximize-btn');
     const closeBtn = document.querySelector('.close-btn');
-
     const sidebarWindowButton = document.querySelector('.sidebar-window-button');
     const sidebarWindow = document.getElementById('sidebar-window');
     const sidebarMinimizeBtn = document.querySelector('.sidebar-minimize-btn');
     const sidebarMaximizeBtn = document.querySelector('.sidebar-maximize-btn');
     const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
-
     const startButton = document.getElementById('start-button');
     const startMenu = document.querySelector('.start-menu-wrapper');
-
     // Main Window button click event
     mainWindowButton.addEventListener('click', () => {
       if (mainWindow.style.display === 'none') { 
@@ -420,32 +381,26 @@ Contact me      </button>
         sidebarWindow.style.display = 'none';
       }
     });
-
     // Minimize button click event for the main window
     minimizeBtn.addEventListener('click', () => {
       mainWindow.style.display = 'none';
     });
-
     // Maximize button click event for the main window
     maximizeBtn.addEventListener('click', () => {
       mainWindow.style.display = 'block';
     });
-
     // Close button click event for the main window
     closeBtn.addEventListener('click', () => {
       mainWindow.style.display = 'none';
     });
-
     // Minimize button click event for the sidebar window
     sidebarMinimizeBtn.addEventListener('click', () => {
       sidebarWindow.style.display = 'none';
     });
-
     // Maximize button click event for the sidebar window
     sidebarMaximizeBtn.addEventListener('click', () => {
       sidebarWindow.style.display = 'block';
     });
-
     // Close button click event for the sidebar window
     sidebarCloseBtn.addEventListener('click', () => {
       sidebarWindow.style.display = 'none';
@@ -459,9 +414,6 @@ Contact me      </button>
 <script>
 var bh_id = "6084mRg7pz0UkwMzQxMQ";
 </script>
-
-
-
 <script src="https://www.bloghandy.com/api/bh_blogengine.js"></script><div class="blog-window" id="blog-window"> 
     <div class="resize-overlay"></div> <!-- Resizable overlay --> 
     <div class="title-bar" id="blog-title-bar">
@@ -488,10 +440,8 @@ var bh_id = "6084mRg7pz0UkwMzQxMQ";
  const aboutMeWindowButton = document.querySelector('.about-me-window-button');
   const aboutMeWindow = document.getElementById('about-me-window');
   const aboutMeTitleBar = document.querySelector('#about-me-title-bar');
-
   let isDragging = false;
   let offsetX, offsetY;
-
   // Title bar mouse down event to start dragging
   aboutMeTitleBar.addEventListener('mousedown', (e) => {
     if (aboutMeWindow.style.display === 'block') {
@@ -500,7 +450,6 @@ var bh_id = "6084mRg7pz0UkwMzQxMQ";
       offsetY = e.clientY - aboutMeWindow.offsetTop;
     }
   });
-
   // Mouse move event to drag the window
   document.addEventListener('mousemove', (e) => {
     if (isDragging) {
@@ -508,12 +457,10 @@ var bh_id = "6084mRg7pz0UkwMzQxMQ";
       aboutMeWindow.style.top = e.clientY - offsetY + 'px';
     }
   });
-
   // Mouse up event to stop dragging
   document.addEventListener('mouseup', () => {
     isDragging = false;
   });
-
   // About Me Window button click event
   aboutMeWindowButton.addEventListener('click', () => {
     if (aboutMeWindow.style.display === 'none') {
@@ -525,68 +472,57 @@ var bh_id = "6084mRg7pz0UkwMzQxMQ";
             // Get the main window elements
 const titleBar = document.getElementById('title-bar');
 const windowBody = document.getElementById('window-body');
-
 // Get the sidebar window elements
 const sidebarTitleBar = document.getElementById('sidebar-title-bar');
-
-
-let isDraggingWindow1 = false;
-let isDragging2 = false;
+let isDraggingMainWindow = false;
+let isDraggingSidebarWindow = false;
 let offsetXMainWindow, offsetYMainWindow;
 let offsetXSidebarWindow, offsetYSidebarWindow;
-
 // Function to handle mouse down event on title bar for dragging for main window
-function dragformain(event) {
+function handleMouseDownForDraggingMainWindow(event) {
   if (event.target.classList.contains('title-bar')) {
-    isDraggingWindow1 = true;
+    isDraggingMainWindow = true;
     offsetXMainWindow = event.clientX - mainWindow.offsetLeft;
     offsetYMainWindow = event.clientY - mainWindow.offsetTop;
   }
 }
-
 // Function to handle mouse move event for dragging for main window
 function handleMouseMoveMainWindow(event) {
-  if (isDraggingWindow1) {
+  if (isDraggingMainWindow) {
     mainWindow.style.left = (event.clientX - offsetXMainWindow) + 'px';
     mainWindow.style.top = (event.clientY - offsetYMainWindow) + 'px';
   }
 }
-
 // Function to handle mouse up event to stop dragging for main window
 function handleMouseUpMainWindow() {
-  isDraggingWindow1 = false;
+  isDraggingMainWindow = false;
 }
-
 // Function to handle mouse down event on title bar for dragging for sidebar window
-function dragsidebar(event) {
+function handleMouseDownForDraggingSidebarWindow(event) {
   if (event.target.classList.contains('title-bar')) {
-    isDragging2 = true;
+    isDraggingSidebarWindow = true;
     offsetXSidebarWindow = event.clientX - sidebarWindow.offsetLeft;
     offsetYSidebarWindow = event.clientY - sidebarWindow.offsetTop;
   }
 }
-
 // Function to handle mouse move event for dragging for sidebar window
 function handleMouseMoveSidebarWindow(event) {
-  if (isDragging2) {
+  if (isDraggingSidebarWindow) {
     sidebarWindow.style.left = (event.clientX - offsetXSidebarWindow) + 'px';
     sidebarWindow.style.top = (event.clientY - offsetYSidebarWindow) + 'px';
   }
 }
-
 // Function to handle mouse up event to stop dragging for sidebar window
 function handleMouseUpSidebarWindow() {
-  isDragging2 = false;
+  isDraggingSidebarWindow = false;
 }
-
 // Add event listeners for mouse events on the title bar for dragging for main window
-titleBar.addEventListener('mousedown', dragformain);
+titleBar.addEventListener('mousedown', handleMouseDownForDraggingMainWindow);
 // Add event listeners for mouse events on the document for moving for main window
 document.addEventListener('mousemove', handleMouseMoveMainWindow);
 document.addEventListener('mouseup', handleMouseUpMainWindow);
-
 // Add event listeners for mouse events on the title bar for dragging for sidebar window
-sidebarTitleBar.addEventListener('mousedown', dragsidebar);
+sidebarTitleBar.addEventListener('mousedown', handleMouseDownForDraggingSidebarWindow);
 // Add event listeners for mouse events on the document for moving for sidebar window
 document.addEventListener('mousemove', handleMouseMoveSidebarWindow);
 document.addEventListener('mouseup', handleMouseUpSidebarWindow);
@@ -594,10 +530,8 @@ document.addEventListener('mouseup', handleMouseUpSidebarWindow);
 const blogWindow = document.getElementById('blog-window');
 const blogTitleBar = document.getElementById('blog-title-bar');
 const blogWindowBody = document.getElementById('blog-window-body');
-
 let isDraggingBlogWindow = false;
 let offsetXBlogWindow, offsetYBlogWindow;
-
 // Function to handle mouse down event on title bar for dragging for blog window
 function handleMouseDownForDraggingBlogWindow(event) {
     if (event.target.classList.contains('title-bar')) {
@@ -606,7 +540,6 @@ function handleMouseDownForDraggingBlogWindow(event) {
         offsetYBlogWindow = event.clientY - blogWindow.offsetTop;
     }
 }
-
 // Function to handle mouse move event for dragging for blog window
 function handleMouseMoveBlogWindow(event) {
     if (isDraggingBlogWindow) {
@@ -614,35 +547,28 @@ function handleMouseMoveBlogWindow(event) {
         blogWindow.style.top = (event.clientY - offsetYBlogWindow) + 'px';
     }
 }
-
 // Function to handle mouse up event to stop dragging for blog window
 function handleMouseUpBlogWindow() {
     isDraggingBlogWindow = false;
 }
-
 // Add event listeners for mouse events on the title bar for dragging for blog window
 blogTitleBar.addEventListener('mousedown', handleMouseDownForDraggingBlogWindow);
 // Add event listeners for mouse events on the document for moving for blog window
 document.addEventListener('mousemove', handleMouseMoveBlogWindow);
 document.addEventListener('mouseup', handleMouseUpBlogWindow);
-
 // Add event listeners for blog window controls (minimize, maximize, close)
 const blogMinimizeBtn = document.querySelector('.blog-minimize-btn');
 const blogMaximizeBtn = document.querySelector('.blog-maximize-btn');
 const blogCloseBtn = document.querySelector('.blog-close-btn');
-
 blogMinimizeBtn.addEventListener('click', () => {
     blogWindow.style.display = 'none';
 });
-
 blogMaximizeBtn.addEventListener('click', () => {
     blogWindow.style.display = 'block';
 });
-
 blogCloseBtn.addEventListener('click', () => {
     blogWindow.style.display = 'none';
 });
-
 // Add event listener for blog window button in the toolbar
 const blogWindowButton = document.querySelector('.blog-window-button');
 blogWindowButton.addEventListener('click', () => {
@@ -657,10 +583,8 @@ blogWindowButton.addEventListener('click', () => {
 const newwin = document.getElementById('new-window');
 const newbar = document.getElementById('new-title-bar');
 const newbody = document.getElementById('new-window-body');
-
 let isDraggingNewWindow = false;
 let offsetXNewWindow, offsetYNewWindow;
-
 // Function to handle mouse down event on title bar for dragging for blog window
 function handleMouseDownForDraggingNewWindow(event) {
     if (event.target.classList.contains('title-bar')) {
@@ -669,7 +593,6 @@ function handleMouseDownForDraggingNewWindow(event) {
         offsetYNewWindow = event.clientY - newwin.offsetTop;
     }
 }
-
 // Function to handle mouse move event for dragging for blog window
 function handleMouseMoveNewWindow(event) {
     if (isDraggingNewWindow) {
@@ -677,45 +600,42 @@ function handleMouseMoveNewWindow(event) {
         newwin.style.top = (event.clientY - offsetYNewWindow) + 'px';
     }
 }
-
 // Function to handle mouse up event to stop dragging for blog window
 function handleMouseUpNewWindow() {
     isDraggingNewWindow = false;
 }
-
 // Add event listeners for mouse events on the title bar for dragging for blog window
 newbar.addEventListener('mousedown', handleMouseDownForDraggingNewWindow);
 // Add event listeners for mouse events on the document for moving for blog window
 document.addEventListener('mousemove', handleMouseMoveNewWindow);
 document.addEventListener('mouseup', handleMouseUpNewWindow);
-
 // Add event listeners for blog window controls (minimize, maximize, close)
 const NewMinimizeBtn = document.querySelector('.new-minimize-btn');
 const NewMaximizeBtn = document.querySelector('.new-maximize-btn');
 const NewCloseBtn = document.querySelector('.new-close-btn');
-
 NewMinimizeBtn.addEventListener('click', () => {
     newwin.style.display = 'none';
 });
-
 NewMaximizeBtn.addEventListener('click', () => {
     newwin.style.display = 'block';
 });
-
 NewCloseBtn.addEventListener('click', () => {
     newwin.style.display = 'none';
 });
 
+// Add event listener for blog window button in the toolbar
 const NewWindowButton = document.querySelector('.new-window-button');
 NewWindowButton.addEventListener('click', () => {
+    if (newwin.style.display === 'none') {
+        newwin.style.display = 'block';
     const newWindow = document.getElementById('new-window');
     if (newWindow.style.display === 'none' || newWindow.style.display === '') {
         newWindow.style.display = 'block';
     } else {
+        newwin.style.display = 'none';
         newWindow.style.display = 'none';
     }
 });
 
 </script>  
 </html> 
-  
