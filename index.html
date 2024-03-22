@@ -706,13 +706,13 @@ NewCloseBtn.addEventListener('click', () => {
     newwin.style.display = 'none';
 });
 
-// Add event listener for blog window button in the toolbar
 const NewWindowButton = document.querySelector('.new-window-button');
 NewWindowButton.addEventListener('click', () => {
-    if (newwin.style.display === 'none') {
-        newwin.style.display = 'block';
+    const newWindow = document.getElementById('new-window');
+    if (newWindow.style.display === 'none' || newWindow.style.display === '') {
+        newWindow.style.display = 'block';
     } else {
-        newwin.style.display = 'none';
+        newWindow.style.display = 'none';
     }
 });
 
