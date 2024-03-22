@@ -22,7 +22,7 @@ body {
   max-height: 90vh;
 width: auto;   
   position: absolute;
-  overflow: auto;
+  overflow: hidden;
   resize: both;
   z-index: 12;
 
@@ -47,7 +47,7 @@ width: auto;
   transform: translate(-50%, -50%);
    
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 10;
+  z-index: 16;
   border: 2px solid transparent;
 }
 .about-me-window {
