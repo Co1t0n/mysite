@@ -530,15 +530,15 @@ const windowBody = document.getElementById('window-body');
 const sidebarTitleBar = document.getElementById('sidebar-title-bar');
 
 
-let isDraggingMainWindow = false;
-let isDraggingSidebarWindow = false;
+let isDraggingWindow1 = false;
+let isDragging2 = false;
 let offsetXMainWindow, offsetYMainWindow;
 let offsetXSidebarWindow, offsetYSidebarWindow;
 
 // Function to handle mouse down event on title bar for dragging for main window
-function handleMouseDownForDraggingMainWindow(event) {
+function dragformain(event) {
   if (event.target.classList.contains('title-bar')) {
-    isDraggingMainWindow = true;
+    isDraggingWindow1 = true;
     offsetXMainWindow = event.clientX - mainWindow.offsetLeft;
     offsetYMainWindow = event.clientY - mainWindow.offsetTop;
   }
@@ -546,7 +546,7 @@ function handleMouseDownForDraggingMainWindow(event) {
 
 // Function to handle mouse move event for dragging for main window
 function handleMouseMoveMainWindow(event) {
-  if (isDraggingMainWindow) {
+  if (isDraggingWindow1) {
     mainWindow.style.left = (event.clientX - offsetXMainWindow) + 'px';
     mainWindow.style.top = (event.clientY - offsetYMainWindow) + 'px';
   }
@@ -554,13 +554,13 @@ function handleMouseMoveMainWindow(event) {
 
 // Function to handle mouse up event to stop dragging for main window
 function handleMouseUpMainWindow() {
-  isDraggingMainWindow = false;
+  isDraggingWindow1 = false;
 }
 
 // Function to handle mouse down event on title bar for dragging for sidebar window
-function handleMouseDownForDraggingSidebarWindow(event) {
+function dragsidebar(event) {
   if (event.target.classList.contains('title-bar')) {
-    isDraggingSidebarWindow = true;
+    isDragging2 = true;
     offsetXSidebarWindow = event.clientX - sidebarWindow.offsetLeft;
     offsetYSidebarWindow = event.clientY - sidebarWindow.offsetTop;
   }
@@ -568,7 +568,7 @@ function handleMouseDownForDraggingSidebarWindow(event) {
 
 // Function to handle mouse move event for dragging for sidebar window
 function handleMouseMoveSidebarWindow(event) {
-  if (isDraggingSidebarWindow) {
+  if (isDragging2) {
     sidebarWindow.style.left = (event.clientX - offsetXSidebarWindow) + 'px';
     sidebarWindow.style.top = (event.clientY - offsetYSidebarWindow) + 'px';
   }
@@ -576,17 +576,17 @@ function handleMouseMoveSidebarWindow(event) {
 
 // Function to handle mouse up event to stop dragging for sidebar window
 function handleMouseUpSidebarWindow() {
-  isDraggingSidebarWindow = false;
+  isDragging2 = false;
 }
 
 // Add event listeners for mouse events on the title bar for dragging for main window
-titleBar.addEventListener('mousedown', handleMouseDownForDraggingMainWindow);
+titleBar.addEventListener('mousedown', dragformain);
 // Add event listeners for mouse events on the document for moving for main window
 document.addEventListener('mousemove', handleMouseMoveMainWindow);
 document.addEventListener('mouseup', handleMouseUpMainWindow);
 
 // Add event listeners for mouse events on the title bar for dragging for sidebar window
-sidebarTitleBar.addEventListener('mousedown', handleMouseDownForDraggingSidebarWindow);
+sidebarTitleBar.addEventListener('mousedown', dragsidebar);
 // Add event listeners for mouse events on the document for moving for sidebar window
 document.addEventListener('mousemove', handleMouseMoveSidebarWindow);
 document.addEventListener('mouseup', handleMouseUpSidebarWindow);
