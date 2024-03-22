@@ -391,8 +391,7 @@ Contact me      </button>
     const maximizeBtn = document.querySelector('.maximize-btn');
     const closeBtn = document.querySelector('.close-btn');
 
-    const sidebarWindowButton = document.querySelector('.sidebar-window-button');
-    const sidebarWindow = document.getElementById('sidebar-window');
+
     const sidebarMinimizeBtn = document.querySelector('.sidebar-minimize-btn');
     const sidebarMaximizeBtn = document.querySelector('.sidebar-maximize-btn');
     const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
@@ -412,14 +411,16 @@ Contact me      </button>
       const newWindow = document.getElementById('new-window');
       newWindow.style.display = 'block';
     }
-    // Sidebar Window button click event
-    sidebarWindowButton.addEventListener('click', () => {
-      if (sidebarWindow.style.display === 'none') {
+const sidebarWindowButton = document.querySelector('.sidebar-window-button');
+const sidebarWindow = document.getElementById('sidebar-window');
+
+sidebarWindowButton.addEventListener('click', () => {
+    if (sidebarWindow.style.display === 'none' || sidebarWindow.style.display === '') {
         sidebarWindow.style.display = 'block';
-      } else {
+    } else {
         sidebarWindow.style.display = 'none';
-      }
-    });
+    }
+});
 
     // Minimize button click event for the main window
     minimizeBtn.addEventListener('click', () => {
