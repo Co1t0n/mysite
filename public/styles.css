@@ -9,12 +9,14 @@ body {
     width: 80vw;
     height: 80vh;
 }
-.new-window  {\ height: 90vh;
-  max-height: 90vw;
+.new-window  
+  height: 90vh;
+  max-height: 90vh;
 width: auto;   
   position: absolute;
   overflow: auto;
   resize: both;
+  z-index: 4;
 
   left: 13%; /* Adjust left position as needed */
   transform: translate(-50%, -50%);
