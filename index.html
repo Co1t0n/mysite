@@ -1311,7 +1311,16 @@ strong{
   }
   
 
-  
+  ::selection {
+  background-color: white; /* Set background color for selected text */
+  color: black; /* Set text color for selected text */
+}
+
+/* CSS for older versions of Firefox */
+::-moz-selection {
+  background-color: white;
+  color: black;
+}
 
   
 /* Toolbar icon styles */
