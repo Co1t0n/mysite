@@ -485,42 +485,59 @@ var bh_id = "6084mRg7pz0UkwMzQxMQ";
    </div>
          <script>
  const aboutMeWindowButton = document.querySelector('.about-me-window-button');
-  const aboutMeWindow = document.getElementById('about-me-window');
-  const aboutMeTitleBar = document.querySelector('#about-me-title-bar');
+const aboutMeWindow = document.getElementById('about-me-window');
+const aboutMeTitleBar = document.querySelector('#about-me-title-bar');
 
-  let isDragging = false;
-  let offsetX, offsetY;
+let isDragging = false;
+let offsetX, offsetY;
 
-  // Title bar mouse down event to start dragging
-  aboutMeTitleBar.addEventListener('mousedown', (e) => {
-    if (aboutMeWindow.style.display === 'block') {
-      isDragging = true;
-      offsetX = e.clientX - aboutMeWindow.offsetLeft;
-      offsetY = e.clientY - aboutMeWindow.offsetTop;
-    }
-  });
+// Title bar mouse down event to start dragging
+aboutMeTitleBar.addEventListener('mousedown', (e) => {
+  if (aboutMeWindow.style.display === 'block') {
+    isDragging = true;
+    offsetX = e.clientX - aboutMeWindow.offsetLeft;
+    offsetY = e.clientY - aboutMeWindow.offsetTop;
+  }
+});
 
-  // Mouse move event to drag the window
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      aboutMeWindow.style.left = e.clientX - offsetX + 'px';
-      aboutMeWindow.style.top = e.clientY - offsetY + 'px';
-    } 
-  });
+// Mouse move event to drag the window
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    aboutMeWindow.style.left = e.clientX - offsetX + 'px';
+    aboutMeWindow.style.top = e.clientY - offsetY + 'px';
+  } 
+});
 
-  // Mouse up event to stop dragging
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
+// Mouse up event to stop dragging
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
 
-  // About Me Window button click event
-  aboutMeWindowButton.addEventListener('click', () => {
-    if (aboutMeWindow.style.display === 'none') {
-      aboutMeWindow.style.display = 'block'; // Show the window
-    } else {
-      aboutMeWindow.style.display = 'none'; // Hide the window
-    }
-  });
+// About Me Window button click event
+aboutMeWindowButton.addEventListener('click', () => {
+  if (aboutMeWindow.style.display === 'none') {
+    aboutMeWindow.style.display = 'block'; // Show the window
+  } else {
+    aboutMeWindow.style.display = 'none'; // Hide the window
+  }
+});
+
+// About Me Window controls
+const aboutMeMinimizeBtn = document.querySelector('.about-me-minimize-btn');
+const aboutMeMaximizeBtn = document.querySelector('.about-me-maximize-btn');
+const aboutMeCloseBtn = document.querySelector('.about-me-close-btn');
+
+aboutMeMinimizeBtn.addEventListener('click', () => {
+  aboutMeWindow.style.display = 'none';
+});
+
+aboutMeMaximizeBtn.addEventListener('click', () => {
+  aboutMeWindow.style.display = 'block';
+});
+
+aboutMeCloseBtn.addEventListener('click', () => {
+  aboutMeWindow.style.display = 'none';
+});
             // Get the main window elements
 const titleBar = document.getElementById('title-bar');
 const windowBody = document.getElementById('window-body');
