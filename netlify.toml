@@ -1,0 +1,26 @@
+[functions]
+
+  [functions.emails]
+  included_files = [
+    "./emails/**"
+  ]
+
+[context]
+
+  [context.deploy-preview]
+
+    [context.deploy-preview.functions]
+
+      [context.deploy-preview.functions.emails]
+      included_files = [
+        "./emails/**"
+      ]
+
+  [context.preview]
+
+    [context.preview.functions]
+
+      [context.preview.functions.emails]
+      included_files = [
+        "./emails/**"
+      ]
